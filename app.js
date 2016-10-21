@@ -1,17 +1,13 @@
 $(document).ready(function () {
-	var ajaxObj; // an object to be used through out the module
 	var avatarArr = []; // to store avatar images
 
 	$.ajax({
 		url: "https://api.github.com/orgs/goshippo/members",
 		success: function(result) {
-			$("#test").html(result);
-			ajaxObj = result;
-			ajaxObj.forEach(function (item) {
+			result.forEach(function (item) {
 				$(".list-group").append("<button type='button' class='list-group-item avatar'>"+item.login+"</button>");
 				avatarArr.push(item.avatar_url);
 			});
-
 		}
 	});
 
